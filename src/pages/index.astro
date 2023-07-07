@@ -1,0 +1,61 @@
+---
+import Header from '../components/Header.astro';
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Just a pretty website">
+	<Header />
+
+	<div class="start">
+		<p class="greeting">Hey! Glad to see you</p>
+		<h1 class="title">Just a pretty website</h1>
+		<p class="sub-title">Nothing to see here, move along.</p>
+	</div>
+
+	<div class="start bg-grid"></div>
+</Layout>
+
+<style>
+	.start {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		height: calc(var(--min-content-height) - var(--header-height));
+		text-align: center;
+	}
+
+	.greeting {
+		font-family: var(--font-serif);
+		font-size: 2rem;
+	}
+
+	.title {
+		font-size: 3rem;
+		font-family: var(--font-special);
+		color: var(--accent-color);
+	}
+
+	.sub-title {
+		font-size: 1rem;
+		font-family: var(--font-special);
+	}
+
+	@media (min-width: 760px) {
+		.start {
+			height: calc(var(--min-content-height) - var(--header-height));
+		}
+
+		.greeting {
+			font-size: 3rem;
+		}
+
+		.title {
+			font-size: 5rem;
+		}
+
+		.sub-title {
+			font-size: 2rem;
+		}
+	}
+</style>

@@ -1,0 +1,16 @@
+:root {
+  --header-height: 4rem;
+  --footer-height: 3rem;
+  --min-content-height: calc(
+    100dvh - var(--header-height) - var(--footer-height)
+  );
+
+  --background-color: #fbf6ea;
+  --foreground-color: #0e0b0b;
+  --accent-color: #dc3030;
+  --pale-accent-color: #dc30302b;
+
+  --font-mono: 'IBM Plex Mono', monospace;
+  --font-serif: 'Bayshore', serif;
+  --font-special: 'Amagro', serif;
+}
