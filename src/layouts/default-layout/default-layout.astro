@@ -1,16 +1,20 @@
 ---
-import '@/assets/styles/global.css';
 import '@/assets/styles/reset.css';
 import '@/assets/styles/vars.css';
 
 import { FontLoader } from '@/components/ui/font-loader';
 import { Header } from '@/components/ui/header';
+import { SEO } from 'astro-seo';
 
 export interface Props {
-  title: string;
+  title?: string;
 }
 
 const { title } = Astro.props;
+
+const seoTitle = title
+  ? title + ' | Just a pretty website'
+  : 'Just a pretty website';
 ---
 
 <!DOCTYPE html>
@@ -21,7 +25,37 @@ const { title } = Astro.props;
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <SEO
+      title={seoTitle}
+      description="Experiments and generative art."
+      openGraph={{
+        basic: {
+          title: seoTitle,
+          type: 'website',
+          image: 'https://just-a-pretty-website.vercel.app/images/og.png',
+        },
+      }}
+      twitter={{
+        creator: '@devlulcas',
+      }}
+      extend={{
+        link: [{ rel: 'icon', href: '/favicon.svg' }],
+        meta: [
+          {
+            name: 'twitter:image',
+            content: 'https://just-a-pretty-website.vercel.app/images/og.png',
+          },
+          { name: 'twitter:title', content: seoTitle },
+          {
+            name: 'twitter:description',
+            content: 'Experiments and generative art.',
+          },
+        ],
+      }}
+    />
+
     <FontLoader />
   </head>
 

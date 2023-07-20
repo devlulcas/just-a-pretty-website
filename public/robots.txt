@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://just-a-pretty-website.vercel.app/sitemap-index.xml
