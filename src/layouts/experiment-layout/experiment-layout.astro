@@ -1,0 +1,26 @@
+---
+import { DefaultLayout } from '@/layouts/default-layout';
+
+export interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<DefaultLayout title={title}>
+  <div>
+    <main class="experiment-box">
+      <slot />
+    </main>
+  </div>
+</DefaultLayout>
+
+<style>
+  div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+</style>

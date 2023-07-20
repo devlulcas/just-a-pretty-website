@@ -1,5 +1,5 @@
 ---
-import Logo from '../components/Logo.astro';
+import { Logo } from '@/components/ui/logo';
 ---
 
 <header class="header">
@@ -9,9 +9,11 @@ import Logo from '../components/Logo.astro';
 
   <nav>
     <ul class="list">
-      <li class="list-item"><a class="link" href="#">About</a></li>
-      <li class="list-item"><a class="link" href="#">Stuff</a></li>
-      <li class="list-item"><a class="link" href="#">Contact</a></li>
+      <li class="list-item"><a class="link" href="/about">About</a></li>
+      <li class="list-item"><a class="link" href="/experiments">Stuff</a></li>
+      <li class="list-item">
+        <a class="link" href="https://www.lucasrego.tech/">My website</a>
+      </li>
     </ul>
   </nav>
 </header>

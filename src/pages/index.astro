@@ -1,61 +1,85 @@
 ---
-import Header from '../components/Header.astro';
-import Layout from '../layouts/Layout.astro';
+import { ExperimentLink } from '@/components/ui/experiment-link';
+import { GridDecoration } from '@/components/ui/grid-decoration';
+import { DefaultLayout } from '@/layouts/default-layout';
 ---
 
-<Layout title="Just a pretty website">
-	<Header />
+<DefaultLayout title="Just a pretty website">
+  <div class="start">
+    <p class="greeting">Hey! Glad to see you</p>
+    <h1 class="title">Just a pretty website</h1>
+    <p class="sub-title">Experiments and generative art.</p>
+  </div>
 
-	<div class="start">
-		<p class="greeting">Hey! Glad to see you</p>
-		<h1 class="title">Just a pretty website</h1>
-		<p class="sub-title">Nothing to see here, move along.</p>
-	</div>
+  <ul class="experiment-list">
+    <li class="experiment-list__item">
+      <ExperimentLink
+        number="001"
+        description="Synced un-synced circle thing"
+      />
+    </li>
+  </ul>
 
-	<div class="start bg-grid"></div>
-</Layout>
+  <GridDecoration className="start" />
+</DefaultLayout>
 
 <style>
-	.start {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-		height: calc(var(--min-content-height) - var(--header-height));
-		text-align: center;
-	}
+  .start {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: calc(var(--min-content-height) - var(--header-height));
+    text-align: center;
+  }
 
-	.greeting {
-		font-family: var(--font-serif);
-		font-size: 2rem;
-	}
+  .greeting {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+  }
 
-	.title {
-		font-size: 3rem;
-		font-family: var(--font-special);
-		color: var(--accent-color);
-	}
+  .title {
+    font-size: 3rem;
+    font-family: var(--font-special);
+    color: var(--accent-color);
+  }
 
-	.sub-title {
-		font-size: 1rem;
-		font-family: var(--font-special);
-	}
+  .sub-title {
+    font-size: 1rem;
+    font-family: var(--font-special);
+  }
 
-	@media (min-width: 760px) {
-		.start {
-			height: calc(var(--min-content-height) - var(--header-height));
-		}
+  .experiment-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+    padding: 0%;
+    margin: 0;
+  }
 
-		.greeting {
-			font-size: 3rem;
-		}
+  .experiment-list__item {
+    margin: 0;
+    padding: 0;
+    z-index: 1;
+  }
 
-		.title {
-			font-size: 5rem;
-		}
+  @media (min-width: 760px) {
+    .start {
+      height: calc(var(--min-content-height) - var(--header-height));
+    }
 
-		.sub-title {
-			font-size: 2rem;
-		}
-	}
+    .greeting {
+      font-size: 3rem;
+    }
+
+    .title {
+      font-size: 5rem;
+    }
+
+    .sub-title {
+      font-size: 2rem;
+    }
+  }
 </style>

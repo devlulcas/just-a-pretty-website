@@ -1,32 +1,8 @@
-.bg-grid {
-  background-size: 20px 20px;
-
-  background-image: linear-gradient(
-      to right,
-      var(--pale-accent-color) 1px,
-      transparent 1px
-    ),
-    linear-gradient(to bottom, var(--pale-accent-color) 1px, transparent 1px);
-
-  background-position: top center;
-
-  image-rendering: pixelated;
-
-  -webkit-mask-image: linear-gradient(
-    to bottom,
-    transparent,
-    10%,
-    white,
-    90%,
-    transparent
-  );
-
-  mask-image: linear-gradient(
-    to bottom,
-    transparent,
-    10%,
-    white,
-    90%,
-    transparent
-  );
+.experiment-box {
+  width: 25vw;
+  aspect-ratio: 1;
+  background-color: #fff;
+  border: 1px solid #000;
+  overflow: hidden;
+  position: relative;
 }
