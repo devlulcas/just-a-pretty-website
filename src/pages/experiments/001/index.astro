@@ -2,6 +2,94 @@
 import { ExperimentLayout } from '@/layouts/experiment-layout';
 ---
 
-<ExperimentLayout title='001'>
-  <span data-experiment="001"></span>
+<ExperimentLayout title="001">
+  <canvas data-experiment="001"></canvas>
 </ExperimentLayout>
+
+<script>
+  const canvas = document.querySelector<HTMLCanvasElement>(
+    '[data-experiment="001"]'
+  );
+
+  if (canvas === null) {
+    throw new Error('Canvas not found');
+  }
+
+  const ctx = canvas.getContext('2d');
+
+  if (ctx === null) {
+    throw new Error('Context not found');
+  }
+
+  const width = (canvas.width = window.innerWidth);
+  const height = (canvas.height = window.innerHeight);
+
+  const centerX = width / 2;
+  const centerY = height / 2;
+
+  class Circle {
+    constructor(
+      public x: number,
+      public y: number,
+      public radius: number,
+      public color: string,
+      public angle: number,
+      public velocity: number,
+      public distance: number
+    ) {}
+
+    draw() {
+      ctx!.beginPath();
+      ctx!.fillStyle = this.color;
+      ctx!.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+      ctx!.fill();
+    }
+
+    update() {
+      this.angle += this.velocity * 2;
+
+      this.x = centerX + Math.cos(this.angle);
+      this.y = centerY + Math.sin(this.angle) * this.distance;
+
+      this.draw();
+    }
+
+    reset() {
+      this.x = centerX;
+      this.y = centerY;
+      this.angle = 0;
+    }
+
+    resize() {
+      this.x = centerX;
+      this.y = centerY;
+    }
+  }
+
+  const circles: Circle[] = [];
+
+  for (let i = 0; i < 10; i++) {
+    const radius = 10 + i * 15;
+    const color = `hsl(360, 75%, ${90 - i * 5}%)`;
+    const angle = Math.random() * Math.PI * 2;
+    const velocity = 0.01 + Math.random() * 0.05;
+    const distance = 69 + i * 30;
+
+    circles.push(
+      new Circle(centerX, centerY, radius, color, angle, velocity, distance)
+    );
+  }
+
+  function animate() {
+    ctx!.fillStyle = 'rgba(255, 255, 255, 0.1)';
+    ctx!.fillRect(0, 0, width, height);
+
+    circles.forEach((circle) => {
+      circle.update();
+    });
+
+    requestAnimationFrame(animate);
+  }
+
+  animate();
+</script>
